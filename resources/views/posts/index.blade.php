@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Все посты')
+@section('title', 'Все контакты')
 
 @section('content')
     <a href="{{ route('posts.create') }}" class="btn btn-success">Добавить</a>
@@ -30,13 +30,13 @@
                 <td>{{ $post->email }}</td>
                 <td class="table-buttons">
                     <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">
-                        <i class="fa fa-pencil" ></i>
+                        Редактировать
                     </a>
                     <form method="POST" action="{{ route('posts.destroy', $post) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">
-                            <i class="fa fa-trash"></i>
+                            Удалить
                         </button>
                     </form>
                 </td>

@@ -69,9 +69,11 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -81,9 +83,22 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'phone'=>'required',
+            'email'=>'required'
+        ]);
+
+        $post = Post::find($id);
+        $post->name = $request->get('name');
+        $post->phone = $request->get('phone');
+        $post->email = $request->get('email');
+
+        $post->save();
+
+        return redirect('posts');
     }
 
     /**
@@ -92,8 +107,16 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect('posts');
+    }
+
+    public function search(Request $request)
+    {
+        $s = $request->s;
     }
 }
