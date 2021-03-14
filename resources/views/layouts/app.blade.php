@@ -23,7 +23,7 @@
                 </li>
 
             </ul>
-            <form method="get" action="{{ route('search') }}" class="form-inline my-2 my-lg-0">
+            <form method="get" action="/search" class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Поиск" id="s" name="s">
                 <button class="btn my-2 my-sm-0" type="submit">Поиск</button>
             </form>

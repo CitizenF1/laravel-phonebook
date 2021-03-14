@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 Route::resource('posts','PostController');
 
-Route::get('/search', 'PostController')->name('search');
+
+

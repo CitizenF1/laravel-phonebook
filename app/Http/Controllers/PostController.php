@@ -60,7 +60,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post.show');
     }
 
     /**
@@ -117,6 +117,8 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $s = $request->s;
+        $s = $request->get('search');
+        $post = Post::find('posts')->where('name', 'LIKE', "%{$s}%");
+        return view('posts', ['post' => $post]);
     }
 }
