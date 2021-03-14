@@ -118,17 +118,17 @@ class PostController extends Controller
 
     public function search(Request $request) /**поиск*/
     {
+        $search = $request->search;
+
+        $post = DB::table('posts')->where( 'name','LIKE', "%{$search}%")->orderBy('name');
+
+        return view('home', compact('posts'));
+
         /*$s = $request->s;
 
         $users = Posts::where('name', 'LIKE', "% {$s}%")->orderBy('name')->get();
 
         return view('home', compact('users'));*/
-
-        $search = $request->search;
-
-        $post = DB::table('posts')->where( 'name','LIKE', "%.$search.%")->orderBy('name');
-
-        return view('home', compact('posts'));
 
 
         /*$search = $request->get('search');
