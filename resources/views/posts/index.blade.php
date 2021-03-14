@@ -11,6 +11,7 @@
         </div>
     @endif
 
+
     <table class="table table-striped mt-3">
         <thead>
         <tr>
@@ -32,6 +33,8 @@
                     <a href="{{ route('posts.edit', $post) }}" class="btn btn-success">
                         Редактировать
                     </a>
+                </td>
+                <td>
                     <form method="POST" action="{{ route('posts.destroy', $post) }}">
                         @csrf
                         @method('DELETE')

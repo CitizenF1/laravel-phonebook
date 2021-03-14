@@ -23,13 +23,15 @@
                 </li>
 
             </ul>
-            <form method="get" action="{{ route('search') }}" class="form-inline my-2 my-lg-0">
+            <form method="get" action="{{ route('posts.index') }}" class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" placeholder="Поиск" aria-label="Поиск" name="search">
                 <button class="btn my-2 my-sm-0" type="submit">Поиск</button>
             </form>
         </div>
     </div>
 </nav>
+
+
 
 <div class="container">
     @yield('content')
