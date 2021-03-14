@@ -3,7 +3,7 @@
 @section('title', 'Все посты')
 
 @section('content')
-    <a href="{{ route('posts.create') }}" class="btn btn-success">Создать пост</a>
+    <a href="{{ route('posts.create') }}" class="btn btn-success">Добавить</a>
 
     @if(session()->get('success'))
         <div class="alert alert-success mt-3">
@@ -14,10 +14,10 @@
     <table class="table table-striped mt-3">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Название</th>
-            <th scope="col">Описание</th>
-            <th scope="col">Цена</th>
+            <th scope="col">id</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">email</th>
             <th></th>
         </tr>
         </thead>
@@ -25,13 +25,10 @@
         @foreach($posts as $post)
             <tr>
                 <th scope="row">{{ $post->id }}</th>
-                <td>{{ $post->title }}</td>
-                <td>{{ $post->description }}</td>
-                <td>{{ $post->price }}$</td>
+                <td>{{ $post->name }}</td>
+                <td>{{ $post->phone }}</td>
+                <td>{{ $post->email }}</td>
                 <td class="table-buttons">
-                    <a href="{{ route('posts.show', $post) }}" class="btn btn-success">
-                        <i class="fa fa-eye"></i>
-                    </a>
                     <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">
                         <i class="fa fa-pencil" ></i>
                     </a>
