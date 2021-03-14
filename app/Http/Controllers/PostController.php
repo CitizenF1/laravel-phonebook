@@ -128,7 +128,7 @@ class PostController extends Controller
 
         $post = DB::table('posts')->where( 'name','LIKE', "%.$search.%")->orderBy('name');
 
-        return view('posts.index', compact('posts'));
+        return view('home', compact('posts'));
 
 
         /*$search = $request->get('search');
