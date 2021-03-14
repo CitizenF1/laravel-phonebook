@@ -117,7 +117,8 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $s = $request->get('search');
+        $s = $request->s;
+
         $post = Post::find('posts')->where('name', 'LIKE', "%{$s}%");
         return view('posts', ['post' => $post]);
     }

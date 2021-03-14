@@ -9,7 +9,7 @@
     <title>@yield('title')</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-success mb-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
     <div class="container">
         <a class="navbar-brand" href="#">Телефонный справочник</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

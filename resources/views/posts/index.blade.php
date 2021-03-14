@@ -29,7 +29,7 @@
                 <td>{{ $post->phone }}</td>
                 <td>{{ $post->email }}</td>
                 <td class="table-buttons">
-                    <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">
+                    <a href="{{ route('posts.edit', $post) }}" class="btn btn-success">
                         Редактировать
                     </a>
                     <form method="POST" action="{{ route('posts.destroy', $post) }}">
