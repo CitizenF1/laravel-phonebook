@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -12,7 +13,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() /**вывод записей*/
     {
         $posts = Post::all();
         return view('posts.index', compact('posts'));
@@ -23,7 +24,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create() /**добавление*/
     {
         return view('posts.create');
     }
@@ -69,7 +70,7 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id) /**редактирование*/
     {
         $post = Post::find($id);
 
@@ -83,7 +84,7 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) /*редактирование*/
     {
         $request->validate([
             'name'=>'required',
@@ -107,7 +108,7 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) /**удаление*/
     {
         $post = Post::find($id);
         $post->delete();
@@ -115,11 +116,24 @@ class PostController extends Controller
         return redirect('posts');
     }
 
-    public function search(Request $request)
+    public function search(Request $request) /**поиск*/
     {
-        $s = $request->s;
+        /*$s = $request->s;
 
-        $post = Post::find('posts')->where('name', 'LIKE', "%{$s}%");
-        return view('posts', ['post' => $post]);
+        $users = Posts::where('name', 'LIKE', "% {$s}%")->orderBy('name')->get();
+
+        return view('home', compact('users'));*/
+
+        $search = $request->search;
+
+        $post = DB::table('posts')->where( 'name','LIKE', "%.$search.%")->orderBy('name');
+
+        return view('posts.index', compact('posts'));
+
+
+        /*$search = $request->get('search');
+
+        $post = DB::table('posts')->where('name', 'LIKE', "%.$search.%");
+        return view('posts', ['posts' => $post]);*/
     }
 }

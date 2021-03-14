@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@index')->name('home');
+
+Route::get('/search', 'PostController@search')->name('search');
 
 Route::resource('posts','PostController');
 
